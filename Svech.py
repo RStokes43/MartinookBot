@@ -2,19 +2,19 @@ import praw
 import time
 import threading
 
-reddit = praw.Reddit(client_id="nXZFD_h0Z1lZGQ", client_secret="wSC_BPthZK8TP0hNB5D7XFAv1NoDrA", user_agent="Python:MistaSvech:1.0 (by u/ZestyPepperoni)", refresh_token="818119085755-g6HKO9vqcNu68cXSNjm9q8UEFAkyQg")
+reddit = praw.Reddit(client_id="nXZFD_h0Z1lZGQ", client_secret="wSC_BPthZK8TP0hNB5D7XFAv1NoDrA", user_agent="Python:MistaSvech:1.0 (by u/ZestyPepperoni)", refresh_token="818119085755-Fd0pIFMxNYDBM2kEW0mCzTYxt-rU-g")
 
 def commentReply(threadName, delay):
     print("Comment reply Thread starting...")
     subreddit = reddit.subreddit("canes+hockey")
     try:
         for comment in subreddit.stream.comments(skip_existing=True):
-            if "svech" in comment.body:
+            if "svech" in comment.body.lower():
                 print(comment.body)
                 print("***Found 'Svech'***")
                 comment.reply('AAAHHHHHHHH, MISTA STRECHNIKOV \n\n^^I ^^am ^^a ^^bot. \n^^Downvote ^^me ^^to ^^delete.')
                 time.sleep(480)
-            elif "andrei" in comment.body:
+            elif "andrei" in comment.body.lower():
                 print(comment.body)
                 print("***Found 'Andrei'***")
                 comment.reply('AAAHHHHHHHH, MISTA STRECHNIKOV \n\n^^I ^^am ^^a ^^bot. \n^^Downvote ^^me ^^to ^^delete.')
