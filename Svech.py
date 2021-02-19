@@ -6,7 +6,7 @@ reddit = praw.Reddit(client_id="nXZFD_h0Z1lZGQ", client_secret="wSC_BPthZK8TP0hN
 
 def commentReply(threadName, delay):
     print("Comment reply Thread starting...")
-    subreddit = reddit.subreddit("canes")
+    subreddit = reddit.subreddit("canes+hockey")
     try:
         for comment in subreddit.stream.comments(skip_existing=True):
             if "svech" in comment.body:
@@ -25,8 +25,8 @@ def commentReply(threadName, delay):
 
 def commentLookup(threadName, delay):
     print("Comment Lookup thread starting...")
+    print("Checking for downvoted comments...")
     while True:
-        print("Checking for downvoted comments...")
         for comment in reddit.user.me().comments.top():
             if comment.score <= 0:
                 print("Comment ", comment, " has a score of ", comment.score)
